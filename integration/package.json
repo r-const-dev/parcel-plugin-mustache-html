@@ -1,0 +1,8 @@
+{
+  "name": "parcel-plugin-mustache-html-integration",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "parcel-plugin-mustache-html": "file:.."
+  }
+}

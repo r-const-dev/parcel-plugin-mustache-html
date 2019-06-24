@@ -1,0 +1,9 @@
+<html>
+  <head>
+    <link rel="" type="text/css" href="{{dep:/src.css}}" />
+  </head>
+  <body>
+    <p>{{message}}</p>
+    <script type="text/javascript" src="{{dep:src.js}}"></script>
+  </body>
+</html>

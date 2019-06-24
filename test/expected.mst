@@ -1,0 +1,9 @@
+<html>
+  <head>
+    <link rel="" type="text/css" href="bundled-src.css" />
+  </head>
+  <body>
+    <p>{{message}}</p>
+    <script type="text/javascript" src="bundled-src.js"></script>
+  </body>
+</html>
