@@ -4,8 +4,8 @@
   "description": "Integrates mustache (https://mustache.github.io/) into parcel.",
   "main": "index.js",
   "scripts": {
-    "integration" : "mocha integration/production.test.js ; mocha integration/development.test.js ; mocha integration/public-url.test.js ; mocha integration/relative-url.test.js",
-    "unittest" : "mocha test/",
+    "integration": "mocha integration/production.test.js ; mocha integration/development.test.js ; mocha integration/public-url.test.js ; mocha integration/relative-url.test.js",
+    "unittest": "mocha test/",
     "test": "npm run unittest ; npm run integration"
   },
   "keywords": [
@@ -25,5 +25,16 @@
   "dependencies": {
     "mustache": "^3.0.1",
     "parcel-bundler": "^1.12.3"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r-const-dev/parcel-plugin-mustache-html.git"
+  },
+  "bugs": {
+    "url": "https://github.com/r-const-dev/parcel-plugin-mustache-html/issues"
+  },
+  "homepage": "https://github.com/r-const-dev/parcel-plugin-mustache-html#readme"
 }
