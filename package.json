@@ -1,6 +1,6 @@
 {
   "name": "parcel-plugin-mustache-html",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Integrates mustache (https://mustache.github.io/) into parcel.",
   "main": "index.js",
   "scripts": {
@@ -29,10 +29,7 @@
   "directories": {
     "test": "test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/r-const-dev/parcel-plugin-mustache-html.git"
-  },
+  "repository": "github:r-const-dev/parcel-plugin-mustache-html.git",
   "bugs": {
     "url": "https://github.com/r-const-dev/parcel-plugin-mustache-html/issues"
   },

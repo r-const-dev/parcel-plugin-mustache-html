@@ -1,21 +1,16 @@
 # parcel-plugin-mustache-html
 
-## Description
+## Resolve dependencies inside mustache templates
 
-**Summary**: Resolves links to parcel assets inside mustache templates.
+This parcel plugin bundles mustache templates that intended primarily for server side html rendering.
 
-This plugin allows bundling mustache templates, intended for server side html rendering, in parcel.
-It extracts any mustache token with the format `{{dep:*}}`, resolve corresponding dependency as a parcel asset and links the packaged bundle.
+**parcel-plugin-mustache-html** processes files with `.mst` extension and outputs the `.mst` file with `{{dep:*}}` links resolved.
+Extracts any mustache token with the format `{{dep:*}}`, resolve corresponding dependency and replaces it with the packaged bundle by parcel.
 
-Plugin is triggered on `.mst` extension.
-
-The main use case is a mustache template used on server side to render an html page that uses static assets bundled using parcel.
+The main use case is to build a client side html web application that is mostly independent from server, but still allows some server side rendering. For example the client side application requires a logged-in user, which is only known by the server.
 To assist with this use case, **parcel-plugin-mustache-html** has a secondary functionality to expand `.mst` template into a `.html` page in development mode.
 
-**parcel-plugin-mustache-html** plugin is triggered on `.mst` extension, e.g. `sample.mst`.
-It parses the `.mst` file and replaces any `{{dep:*}}` token with the corresponding reference as bundled by parcel.
-
-## Usage
+## Installation
 
 **parcel-plugin-mustache-html** is a parcel plugin which requires only to be installed in order for parcel to recognize it:
 
@@ -23,13 +18,9 @@ It parses the `.mst` file and replaces any `{{dep:*}}` token with the correspond
 npm install --save-dev parcel-plugin-mustache-html
 ```
 
-Once installed, **parcel-plugin-mustache-html** will process any `.mst` asset, e.g.
+## Usage
 
-```sh
-npx parcel --out-dir devel random-sample.mst
-```
-
-For example, consider `random-sample.mst` source mustache template with a javascript reference specified as `{{dep:}}`:
+Consider the following `random-sample.mst` source mustache template with a javascript reference specified as `{{dep:*}}`:
 ```html
 <html>
   <head><title>Hello, parcel-plugin-mustache-html</title></head>
@@ -40,7 +31,13 @@ For example, consider `random-sample.mst` source mustache template with a javasc
 </html>
 ```
 
-**parcel-plugin-mustache-html** produces `devel/random-sample.mst` with javascript reference expanded. Any other mustache token is preserved:
+Ask parcel to bundle `random-sample.mst`, **parcel-plugin-mustache-html** is triggered by `.mst` file extension.
+
+```sh
+npx parcel random-sample.mst
+```
+
+This `dist/random-sample.mst` with javascript reference expanded and any other mustache token preserved:
 ```html
 <html>
   <head><title>Hello, parcel-plugin-mustache-html</title></head>
@@ -51,6 +48,7 @@ For example, consider `random-sample.mst` source mustache template with a javasc
 </html>
 ```
 
+In development mode the `.mst` mustache template could be expanded into a `.html` output by providing data for the rest of mustache tokens.
 <details>
   <summary>`.html` expansion in development mode</summary>
 
@@ -66,7 +64,7 @@ For example, consider `random-sample.mst` source mustache template with a javasc
   }
   ```
 
-  **parcel-plugin-mustache-html** discovers `random-sample.mst.view` file and expands it to `.html` file, i.e. `devel/random-sample.html`:
+  **parcel-plugin-mustache-html** discovers `random-sample.mst.view` file and expands it to `.html` file, i.e. `dist/random-sample.html`:
   ```html
   <html>
     <head><title>Hello, parcel-plugin-mustache-html</title></head>
@@ -81,8 +79,9 @@ For example, consider `random-sample.mst` source mustache template with a javasc
 
 ## Limitations
 
-In the initial version, 1.0.1, **parcel-plugin-mustache-html** comes with the following limitations:
+**parcel-plugin-mustache-html** comes with the following known limitations:
 + Handles only `.mst` extension and doesn't provide a mechanism to ignore matching files, i.e. allow other plugins to handle `.mst` files.
 + It doesn't allow customization of tags to identify mustache tokens, uses only the defaults (`["{{", "}}"]`).
 + Expands mustache template only to `.html` and only in development.
 
+Please file a feature request or contribute code on github if these limitations are blocking you. [parcel-plugin-mustache-html@github](https://github.com/r-const-dev/parcel-plugin-mustache-html)
